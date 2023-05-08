@@ -21,6 +21,7 @@ class GameView{
 	constructor(game, ctx){
 		this.game = game;
 		this.ctx = ctx;
+		this.lastTime = 0;
 		this.keyPresses = {};
 		// this.bindKeyHandlers();
 		this.bindKeyHandlersWithoutKeyMaster();
@@ -47,7 +48,6 @@ class GameView{
 	}
 
 	keyMapping(){
-		
 		Object.keys(this.keyPresses).forEach(key => {
 			console.log(Object.keys(this.keyPresses))
 		// this.keyPresses.forEach(key => {
@@ -62,72 +62,23 @@ class GameView{
 		})
 	}
 
+	animate(currentTime){
+		let timeDelta = currentTime - this.lastTime;
+		this.game.step(timeDelta);
+		this.game.draw(this.ctx);
+		this.lastTime = currentTime;
 
-	bindKeyHandlers(){
-
-		key('w', () => {
-			this.game.ship.power(GameView.MOVES['w']);
-			return false;
-		})
-		key('a', () => {
-			this.game.ship.power(GameView.MOVES['a']);
-			return false;
-		})
-		key('s', () => {
-			this.game.ship.power(GameView.MOVES['s']);
-			return false;
-		})
-		key('d', () => {
-			this.game.ship.power(GameView.MOVES['d']);
-			return false;
-		})
-		key('w+d', () => {
-			console.log("w+d")
-			this.game.ship.power(GameView.MOVES['wd']);
-			// this.game.ship.power(GameView.MOVES['d']);
-			return false;
-		})
-		key('s+d', () => {
-			console.log("s+d")
-			this.game.ship.power(GameView.MOVES['sd']);
-			// this.game.ship.power(GameView.MOVES['d']);
-			return false;
-		})
-		key('w+a', () => {
-			console.log("w+a")
-			this.game.ship.power(GameView.MOVES['wa']);
-			// this.game.ship.power(GameView.MOVES['a']);
-			return false;
-		})
-		key('s+a', () => {
-			console.log("s+a")
-			this.game.ship.power(GameView.MOVES['sa']);
-			// this.game.ship.power(GameView.MOVES['a']);
-			return false;
-		})
-
-
-
-		key('e', (event) => {
-			this.game.ship.vel = [0,0];
-			return false;
-		})
-
-		key('space', (event) => {
-			if(event.target === document.body){ //checking the target will prevent it from scrolling the website body. However...window scrolling with space won't work even if focus is not on canvas, by clicking outside the canvas...not intended...
-				this.game.ship.fireBullet();
-				event.preventDefault();
-			}
-		})
+		requestAnimationFrame(this.animate.bind(this));
 	}
 
 	start(){
 		// Because setInterval calls its callbacks functionstyle, need to bind to context.
 		// However...why does the callback passed into the forEach in this.game.moveObjects() not need binding?
 		// setInterval(this.game.moveObjects.bind(this.game), GameView.INTERVAL);
-		setInterval(this.game.step.bind(this.game), GameView.INTERVAL);
+		// setInterval(this.game.step.bind(this.game), GameView.INTERVAL);
 		// debugger
-		setInterval(this.game.draw.bind(this.game), GameView.INTERVAL, this.ctx);
+		// setInterval(this.game.draw.bind(this.game), GameView.INTERVAL, this.ctx);
+		requestAnimationFrame(this.animate.bind(this));
 	}
 }
 

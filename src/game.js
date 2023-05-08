@@ -107,10 +107,10 @@ class Game {
 		return false;
 	}
 
-	moveObjects(){
+	moveObjects(timeDelta){
 		this.allObjects().forEach(obj => {
 			// debugger
-			obj.move();
+			obj.move(timeDelta);
 		});
 		// console.log(this.allObjects())
 	};
@@ -142,8 +142,8 @@ class Game {
 		return arr;
 	}
 
-	step(){
-		this.moveObjects();
+	step(timeDelta){
+		this.moveObjects(timeDelta);
 		this.checkCollisions();
 	}
 
