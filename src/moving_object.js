@@ -69,10 +69,11 @@ class MovingObject{
 
 	// Add comment - testing pushing changes to a git branch and merging back to main.
 
-	move(){
+	move(timeDelta){
 		// debugger
-		let newX = this.pos[0] + this.vel[0];
-		let newY = this.pos[1] + this.vel[1];
+		// timeDelta ||= 1;
+		let newX = this.pos[0] + (this.vel[0] * timeDelta / 45);
+		let newY = this.pos[1] + (this.vel[1] * timeDelta / 45);
 		this.pos = [newX, newY];
 		// this.pos = this.game.wrap([newX, newY]);
 		if(this.game.isOutOfBounds(this.pos)){

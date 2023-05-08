@@ -46,4 +46,5 @@ body {
 
 #game-canvas {
 	border: 1px dashed gray;
+	/* transform: translateX(2px); */
 }
