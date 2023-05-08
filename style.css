@@ -1,0 +1,49 @@
+body {
+	padding-top: 10px;
+}
+
+.all-container {
+	display: flex;
+	
+	/* ---------------------------------------------- */
+	/* Default :row. dir main axis. Cross axis will be opposite. */
+	flex-direction:row;
+
+	/* ---------------------------------------------- */
+	/* Default :flex-start. How items spread across main axis. */
+	justify-content:flex-start;
+	justify-content:flex-end;
+	justify-content:center;
+	justify-content:space-between;
+	justify-content:space-around;
+
+
+	/* items expand to fit cross-axis*/
+	/* align-items: stretch;  */
+	
+	/* items no expand, centered around main axis*/
+	align-items: center; 
+
+	/* items align to top of cross-axis do not grow */
+	align-items: flex-start; 
+
+	/* ---------------------------------------------- */
+}
+
+.div-left {
+	display: none;
+	width: 200px;
+	min-height: 100px;
+	border: 3px solid #333;
+}
+
+.div-right {
+	display: none;
+	width: 200px;
+	min-height: 200px;
+	border: 3px solid #333;
+}
+
+#game-canvas {
+	border: 1px dashed gray;
+}

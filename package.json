@@ -1,0 +1,15 @@
+{
+  "name": "asteroids-practice",
+  "version": "1.0.0",
+  "description": "Asteroids clone practice",
+  "scripts": {
+    "start": "webpack --watch --mode=development"
+  },
+  "keywords": [],
+  "author": "ch",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2"
+  }
+}
