@@ -104,6 +104,7 @@ class SpaceStation extends MovingObject{
 		ctx.fill();
 		ctx.stroke();
 		ctx.closePath();
+		this.displayCoordsOfPos(ctx,(0, this.radius * -1));
 
 		// Linear path exit point
 		ctx.beginPath();

@@ -33,6 +33,14 @@ class MovingObject{
 		ctx.fillText(`X: ${Math.floor(this.pos[0])}, Y: ${Math.floor(this.pos[1])}`,this.pos[0] + 30, this.pos[1] + 30)
 	}
 
+	displayCoordsOfPos(ctx,pos) {
+		ctx.beginPath();
+		ctx.font = "20px Arial";
+		ctx.fillStyle = "white";
+		ctx.fillText(`X: ${Math.floor(pos[0])}, Y: ${Math.floor(pos[1])}`,pos[0] + 30, pos[1] + 30)
+		ctx.closePath();
+	}
+
 	isCollidedWith(otherObject){
 		// this.game.asteroids.forEach(asteroid => {
 		// 	if(asteroid !== this) {
